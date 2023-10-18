@@ -1,0 +1,3 @@
+#ignora pacotes i pelo npm
+node_modules
+
