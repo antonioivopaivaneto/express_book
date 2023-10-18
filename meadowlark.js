@@ -1,5 +1,6 @@
 const express = require('express');
 const { engine: expressHandlebars } = require('express-handlebars')
+const fortune = require('./lib/fortune');
 
 const app = express();
 app.engine('handlebars',expressHandlebars({
@@ -17,16 +18,10 @@ app.get('/', (req, res) => {
     res.render('home');
 });
 
-const fortunes=[
-    "orem   dolor sit amet, consectetur adip",
-    "lorem ipsum dolor sit amet, con",
-    "ipsun  sit amet, consectetur adip",
-    "amet, consectetur adip",
-]
+
 
 app.get('/about', (req, res) => {
-    const randomFortune =fortunes[Math.floor(Math.random()*fortunes.length)]
-    res.render('about',{fortune:randomFortune});
+    res.render('about',{fortune:fortune.getFortune()});
 });
 
 // Página 404 personalizada
